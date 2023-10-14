@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Best_Shop_Doors.Models.Door>
+
+@{
+    ViewData["Title"] = "Doors";
+}
+
+<h1>Doors</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opisanie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Material)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proizvoditel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    @{string path = @"~/door/" + item.Foto;
+                        if (File.Exists(path))
+                        {
+                                        <img width="150" src="~/img/Use.jpg">
+                        }
+                        else
+                        {
+                                        <img width="150" src="~/door/@item.Foto">
+                        }
+                      }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opisanie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tip.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvoditel.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

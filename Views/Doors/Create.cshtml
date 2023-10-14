@@ -1,0 +1,70 @@
+﻿@model Best_Shop_Doors.Models.Door
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Door</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipID" class="control-label"></label>
+                <select asp-for="TipID" class ="form-control" asp-items="ViewBag.TipID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaterialID" class="control-label"></label>
+                <select asp-for="MaterialID" class ="form-control" asp-items="ViewBag.MaterialID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorID" class="control-label"></label>
+                <select asp-for="ColorID" class ="form-control" asp-items="ViewBag.ColorID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProizvoditelID" class="control-label"></label>
+                <select asp-for="ProizvoditelID" class ="form-control" asp-items="ViewBag.ProizvoditelID"></select>
+            </div>
+            
+
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label> 
+                <input asp-for="Foto" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="formFile" class="form-label mt-4"><ya-tr-span data-index="450-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Default file input example" data-translation="Пример ввода файла по умолчанию" data-ch="0" data-type="trSpan" data-selected="false"></ya-tr-span></label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="form-group">
+                <label asp-for="Opisanie" class="control-label"></label>
+                <input asp-for="Opisanie" class="form-control" />
+                <span asp-validation-for="Opisanie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
